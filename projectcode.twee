@@ -1,0 +1,110 @@
+:: StoryTitle
+Twine Phone Example
+
+:: StoryData
+{
+    "format": "SugarCube",
+    "format-version": "2.29.0",
+    "start": "PhoneScreen",
+    "ifid": "9ea5b41b-e824-41b1-9018-d12b0a0c9909"
+}
+
+:: PhoneScreen
+<div id="phone">
+    <div id="header">Name</div>
+    <span class="messagein">This is an incoming message.</span>
+    <span class="messageout">This is an outgoing message.</span>
+    <span class="messagein">This is an incoming message. It has multiple lines.</span>
+    <span class="messageout">This is an outgoing message. It has multiple lines.</span>
+    <span class="messagein hidden">This message was hidden!</span>
+    <span class="messageout hidden">This message was hidden too!</span>
+    <span class="messagein hidden">This message was hidden and has multiple lines!</span>
+    <span class="messageout hidden">This message was hidden and has multiple lines too!</span>
+    <div id="footer"><div>Send a new message</div><<button "<b>SEND</b>">>
+    <<script>>
+        console.log("Clicked!");
+        if (document.querySelector(".hidden")) {
+            let hiddenMessage = document.querySelector(".hidden");
+            hiddenMessage.classList.remove("hidden");
+        } else {
+            alert("No more messages!")
+            /* To continue to another passage, you would use:
+            Engine.play("NextPassage") */
+        }
+    <</script>>
+    <</button>></div>
+</div>
+<a href="https://github.com/chesswitch/SugarCubePhone">View the code</a>
+
+:: StoryCaption
+A phone for SugarCube Twine games, made by <a href="http://chessw.itch.io">chess</a>.
+:: StoryStyle [stylesheet]
+#phone {
+    border: 20px #515151 solid;
+    height: 640px;
+    width: 400px;
+    position: relative;
+    border-radius: 20px;
+    background-color: white;
+}
+#header {
+    font-family: sans-serif;
+    text-align: center;
+    font-size: 28px;
+    margin-top: -28px;
+    margin-bottom: -28px;
+    border-bottom: 2px black solid;
+    color: black;
+    border-radius: 20px 20px 0px 0px;
+}
+.messagein {
+    font-family: sans-serif;
+    color: white;
+    background-color: skyblue;
+    border: 10px skyblue solid;
+    border-radius: 10px 10px 10px 0px;
+    font-size: 16px;
+    margin-left: 10px;
+    line-height: 18px;
+    margin-top: 10px;
+    margin-left: 10px;
+    margin-right: 60px;
+    float: left;
+}
+.messageout {
+    font-family: sans-serif;
+    color: white;
+    background-color: yellowgreen;
+    border: 10px yellowgreen solid;
+    border-radius: 10px 10px 0px 10px;
+    font-size: 16px;
+    float:right;
+    line-height: 18px;
+    margin-top: 10px;
+    margin-right: 10px;
+    margin-left: 60px;
+}
+
+#footer {
+    position:absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    border: 2px black solid;
+    font-family: sans-serif;
+    height: 34px;
+    line-height: 34px;
+    font-size: 16px;
+    background-color: #444;
+    padding-left: 4px;
+    display: grid;
+    grid-template-columns: auto 80px;
+}
+
+#sendbutton {
+    background-color: blue;
+}
+
+.hidden {
+    visibility:hidden;
+}
